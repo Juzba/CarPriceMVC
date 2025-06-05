@@ -1,0 +1,15 @@
+﻿@{
+	ViewData["Title"] = "Přidat auto";
+}
+
+
+
+<div>
+	<h1>Přidat Xml Cars do DB</h1>
+
+
+	<form asp-action="AddXmlToDB" asp-controller="Home" enctype="multipart/form-data" method="post">
+		<input type="file" accept=".xml" name="XmlFile" value="" />
+		<button class="btn btn-outline-info" type="submit">Přidat do DB</button>
+	</form>	
+</div>
