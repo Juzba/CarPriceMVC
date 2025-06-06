@@ -43,7 +43,7 @@ public class Functions(ApplicationDbContext db, ILogger<Functions> logger)
         Random rnd = new();
         string[] carNames = ["Škoda Oktávia", "Škoda Felicia", "Škoda Fabia", "Škoda Favorit", "Škoda Forman"];
 
-        DateTime dateTime = new(rnd.Next(2000, 2025), rnd.Next(1, 12), rnd.Next(1, 30), rnd.Next(0, 23), rnd.Next(0, 59), rnd.Next(0, 59));
+        DateTime dateTime = new(rnd.Next(2000, 2025), rnd.Next(1, 12), rnd.Next(1, 29), rnd.Next(0, 23), rnd.Next(0, 59), rnd.Next(0, 59));
 
         Car car = new()
         {
