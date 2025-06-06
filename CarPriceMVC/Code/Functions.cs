@@ -29,7 +29,7 @@ public class Functions(ApplicationDbContext db, ILogger<Functions> logger)
 
         if (data == null) return false;
 
-        await _db.AddAsync(data[0]);
+        await _db.AddRangeAsync(data);
         await _db.SaveChangesAsync();
 
 

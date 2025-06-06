@@ -1,0 +1,34 @@
+﻿@{
+	ViewData["Title"] = "Přidat auto";
+}
+
+@model Car
+
+<div>
+	<h1>Přidat Auto do DB</h1>
+
+	<form asp-action="EditCar" asp-controller="Home" style="width: 500px" method="post">
+
+		<div asp-validation-summary="All" class="text-danger"></div>
+
+		<div class="form-floating mb-3">
+			<input asp-for="@Model.Name" type="text" value="Škoda Fabia"  maxlength="50" class="form-control">
+			<label asp-for="@Model.Name">Car Name</label>
+		</div>
+		<div class="form-floating mb-3">
+			<input asp-for="@Model.DateT" type="datetime-local" value="@Model.DateT.ToString("yyyy-MM-ddTHH:mm")" class="form-control">
+			<label asp-for="@Model.DateT">Datum</label>
+		</div>
+		<div class="form-floating mb-3">
+			<input asp-for="@Model.Price" type="number" value="500000" min="0" max="99999999" class="form-control">
+			<label asp-for="@Model.Price" >Price</label>
+		</div>
+		<div class="form-floating mb-3">
+			<input asp-for="@Model.DPH" type="number" value="20" class="form-control">
+			<label asp-for="@Model.DPH">DPH</label>
+		</div>
+
+		<button type="submit" class="btn btn-outline-info">Přidat Auto</button>
+	</form>	
+
+</div>
