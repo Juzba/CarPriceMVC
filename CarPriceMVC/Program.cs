@@ -1,3 +1,4 @@
+using CarPriceMVC.Code;
 using CarPriceMVC.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 
 
+builder.Services.AddTransient<Functions>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

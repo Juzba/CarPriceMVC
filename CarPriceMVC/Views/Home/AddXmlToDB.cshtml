@@ -2,14 +2,18 @@
 	ViewData["Title"] = "Přidat auto";
 }
 
+@model string
 
 
 <div>
-	<h1>Přidat Xml Cars do DB</h1>
+	<h1 class=" my-4">Přidat Xml Cars do DB</h1>
+	<p class="text-danger">@Model</p>
 
-
-	<form asp-action="AddXmlToDB" asp-controller="Home" enctype="multipart/form-data" method="post">
-		<input type="file" accept=".xml" name="XmlFile" value="" />
+	<form asp-action="AddXmlToDB" asp-controller="Home" enctype="multipart/form-data" method="post" class=" border p-4 border-info" style="width: 400px">
+		<div class="mb-3">
+			<label for="formFile" class="form-label">Nahrát soubor do DB.</label>
+			<input accept=".xml" name="XmlFile" class="form-control" type="file" id="formFile">
+		</div>
 		<button class="btn btn-outline-info" type="submit">Přidat do DB</button>
 	</form>	
 </div>

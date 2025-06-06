@@ -1,11 +1,14 @@
 using CarPriceMVC.Code;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace CarPriceMVC.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(Functions fc) : Controller
     {
+        private readonly Functions _fc = fc;
+
         public IActionResult Index() => View();
 
         public IActionResult AddCar() => View();
@@ -13,9 +16,9 @@ namespace CarPriceMVC.Controllers
         public IActionResult AddXmlToDB() => View();
 
         [HttpPost]
-        public IActionResult AddXmlToDB(IFormFile XmlFile) 
+        public async Task<IActionResult> AddXmlToDB(IFormFile XmlFile) 
         {
-            return Functions.XmlToDB(XmlFile) ? RedirectToAction("Index", "Home") : View();
+            return await _fc.XmlToDB(XmlFile) ? RedirectToAction("Index", "Home") : View((object) "Musíš vybrat soubor!!");
         }
 
 
