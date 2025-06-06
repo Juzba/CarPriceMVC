@@ -12,7 +12,7 @@
 		<div asp-validation-summary="All" class="text-danger"></div>
 
 		<div class="form-floating mb-3">
-			<input asp-for="@Model.Name" type="text" value="Škoda Fabia"  maxlength="50" class="form-control">
+			<input asp-for="@Model.Name" type="text"  maxlength="50" class="form-control">
 			<label asp-for="@Model.Name">Car Name</label>
 		</div>
 		<div class="form-floating mb-3">
@@ -20,11 +20,11 @@
 			<label asp-for="@Model.DateT">Datum</label>
 		</div>
 		<div class="form-floating mb-3">
-			<input asp-for="@Model.Price" type="number" value="500000" min="0" max="99999999" class="form-control">
+			<input asp-for="@Model.Price" type="number" min="0" max="99999999" class="form-control">
 			<label asp-for="@Model.Price" >Price</label>
 		</div>
 		<div class="form-floating mb-3">
-			<input asp-for="@Model.DPH" type="number" value="20" class="form-control">
+			<input asp-for="@Model.DPH" type="number" class="form-control">
 			<label asp-for="@Model.DPH">DPH</label>
 		</div>
 

@@ -37,5 +37,30 @@ public class Functions(ApplicationDbContext db, ILogger<Functions> logger)
     }
 
 
+
+    public Car RandomCar()
+    {
+        Random rnd = new();
+        string[] carNames = ["Škoda Oktávia", "Škoda Felicia", "Škoda Fabia", "Škoda Favorit", "Škoda Forman"];
+
+        DateTime dateTime = new(rnd.Next(2000, 2025), rnd.Next(1, 12), rnd.Next(1, 30), rnd.Next(0, 23), rnd.Next(0, 59), rnd.Next(0, 59));
+
+        Car car = new()
+        {
+            Name = carNames[rnd.Next(0, carNames.Length - 1)],
+            DateT = dateTime,
+            Price = rnd.Next(80000, 500000),
+            DPH = dateTime.Year > 2005 ? 20 : 19
+        };
+
+        return car;
+    }
+
+
+
+
+
+
+
 }
 

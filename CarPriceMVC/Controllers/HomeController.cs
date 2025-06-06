@@ -14,7 +14,7 @@ namespace CarPriceMVC.Controllers
 
         public IActionResult Index() => View();
 
-        public IActionResult EditCar() => View(new Car() { DateT = DateTime.Now});
+        public IActionResult EditCar() => View(_fc.RandomCar());
 
         public IActionResult AddXmlToDB() => View();
 
