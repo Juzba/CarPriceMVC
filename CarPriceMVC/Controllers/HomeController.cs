@@ -1,9 +1,7 @@
 using CarPriceMVC.Code;
 using CarPriceMVC.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarPriceMVC.Controllers
 {
@@ -17,11 +15,30 @@ namespace CarPriceMVC.Controllers
         public IActionResult EditCar() => View(_fc.RandomCar());
 
         public IActionResult AddXmlToDB() => View();
+        public async Task<IActionResult> Result() => View(await _db.Cars.ToListAsync());
+        public async Task<IActionResult> List() => View(await _db.Cars.ToListAsync());
+
+        public async Task<IActionResult> DeleteAll()
+        {
+            await _db.Database.ExecuteSqlRawAsync("DELETE FROM Cars");
+            return RedirectToAction("List", "Home");
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            if (int.TryParse(id, out int parsedID))
+            {
+                _db.Entry(new Car() { Id = parsedID }).State = EntityState.Deleted;
+                await _db.SaveChangesAsync();
+            }
+
+            return RedirectToAction("List", "Home");
+        }
 
         [HttpPost]
-        public async Task<IActionResult> AddXmlToDB(IFormFile XmlFile) 
+        public async Task<IActionResult> AddXmlToDB(IFormFile XmlFile)
         {
-            return await _fc.XmlToDB(XmlFile) ? RedirectToAction("Index", "Home") : View((object) "Musíš vybrat soubor!!");
+            return await _fc.XmlToDB(XmlFile) ? RedirectToAction("List", "Home") : View((object)"Musíš vybrat soubor!!");
         }
 
         [HttpPost]
@@ -31,7 +48,7 @@ namespace CarPriceMVC.Controllers
             await _db.AddAsync(car);
             await _db.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("List", "Home");
         }
     }
 }
