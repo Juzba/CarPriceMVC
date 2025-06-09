@@ -17,6 +17,7 @@ namespace CarPriceMVC.Controllers
         public IActionResult AddXmlToDB() => View();
 
         public async Task<IActionResult> List() => View(await _db.Cars.ToListAsync());
+
         public IActionResult Result()
         {
             var data = _db.Cars.AsEnumerable()
