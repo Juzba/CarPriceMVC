@@ -2,54 +2,47 @@
 	ViewData["Title"] = "Součet Aut";
 }
 
-@model IList<Car>
+@model IEnumerable<CarPrice>
 
 <div>
-	<h1>Součet aut.</h1>
+	<h1 class="my-5">Součet aut.</h1>
 
 
-	<table>
+	<table class="table table-dark table-bordered" style="max-width: 700px">
 		<thead>
 			<tr>
 				<th>
-					<table>
+					<table class="table table-dark table-borderless">
 						<tr>
 							<th>Název Modelu</th>
 							<th></th>
 						</tr>
 						<tr>
 							<th>Cena bez DPH</th>
-							<th>Cena s DPH</th>
+							<th width="50%">Cena s DPH</th>
 						</tr>
 					</table>
 				</th>
 			</tr>
 		</thead>
 		<tbody>
-
-
-
-
-
-
-
+			@foreach (var Car in Model)
+			{
+				<tr>
+					<td>
+						<table class="table table-dark table-borderless">
+							<tr>
+								<th>@Car.Name</th>
+								<th></th>
+							</tr>
+							<tr>
+								<th>@Car.Price.ToString("N2")</th>
+								<th width="50%">@Car.PriceWithDPH.ToString("N2")</th>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			}
 		</tbody>
-
-
-
-
-
-
 	</table>
-
-
-
-
-
-
-
-
-
-
-
 </div>

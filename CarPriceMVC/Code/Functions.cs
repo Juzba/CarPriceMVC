@@ -37,7 +37,6 @@ public class Functions(ApplicationDbContext db, ILogger<Functions> logger)
     }
 
 
-
     public Car RandomCar()
     {
         Random rnd = new();
