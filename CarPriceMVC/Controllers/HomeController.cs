@@ -39,13 +39,10 @@ namespace CarPriceMVC.Controllers
             return RedirectToAction("List", "Home");
         }
 
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (int.TryParse(id, out int parsedID))
-            {
-                _db.Entry(new Car() { Id = parsedID }).State = EntityState.Deleted;
-                await _db.SaveChangesAsync();
-            }
+            _db.Entry(new Car() { Id = id }).State = EntityState.Deleted;
+            await _db.SaveChangesAsync();
 
             return RedirectToAction("List", "Home");
         }
